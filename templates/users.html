@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Журналы</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+       .menu {
+	width: 100%;
+	display: table;
+}
+.menu ul {
+	display: table-row;
+}
+.menu li {
+	display: table-cell;
+	position: relative;
+	background: #b6b6b6;
+	width: 50%;
+}
+.menu li a {
+	display: block;
+	padding: 15px 15px;
+	color: #fff;
+	text-align: center;
+}
+.menu-caret:after {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: .255em;
+	vertical-align: .255em;
+	content: "";
+	border-top: 3px solid;
+	border-right: 3px solid transparent;
+	border-bottom: 0;
+	border-left: 3px solid transparent;
+}
+.menu ul li:hover, .menu a:hover {
+	background: grey;
+	text-decoration: none;
+}
+.menu li:hover ul  {
+	display: block;
+	position: absolute;
+	top: 100%;
+	left: 0px;
+	background: grey;
+	margin: 0;
+	padding: 10px 20px;
+	width: 150px;
+	z-index: 9999;
+}
+.menu ul ul  {
+	display: none;
+}
+.menu ul ul li  {
+	display: block;
+	background: grey;
+	padding: 5px 0;
+}
+.menu ul ul li a  {
+	display: block;
+	padding: 0;
+	background: grey;
+	text-align: left;
+}
+h1 {
+   text-align: start ;
+}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            text-decoration: none;
+            text-align: start ;
+        }
+        a:hover {
+            text-decoration: none;
+            text-align: start ;
+        }
+.menu ul ul li a  {
+	display: block;
+	padding: 0;
+	background: grey;
+	text-align: left;
+}
+h1 {
+   text-align: start ;
+}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            text-decoration: none;
+            text-align: start ;
+        }
+        a:hover {
+            text-decoration: none;
+            text-align: start ;
+        }
+           input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button[type="submit"] {
+            padding: 8px 15px;
+            background-color: grey;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Администратор   {{ username }} <a style="float: right;" href="{{ url_for('logout') }}">Выход</a></h1>
+    <form action="{{ url_for('admindashboard') }}" method="post" style="display: inline;">
+        <input type="text" name="query" placeholder="Введите запрос для поиска">
+        <button type="submit">Найти</button>
+<div class = "menu">
+    <ul>
+<li><a href="{{ url_for('users') }}">Список пользователей</a></li>
+<li><a href="{{ url_for('admindashboard') }}">Журнал аудита</a> </li>
+</ul>
+</div>
+
+<table>
+<thead> <tr>
+    <th>id</th>
+    <th>Идентификатор</th>
+    <th>Пароль</th>
+    <th>Заблокирован
+    <th>Права</th>
+</tr></thead>
+    <tbody>
+{% for row in data %}
+<tr><td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[4] }}</td>
+    <td>{{ row[5] }}</td>
+</tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
