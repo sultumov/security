@@ -9,7 +9,7 @@ def connect_to_database():
     return pymysql.connect(
         host="localhost",
         user="root",
-        password="rick",
+        password="root",
         database="LAB2"
     )
 

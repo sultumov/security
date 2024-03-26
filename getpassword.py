@@ -1,6 +1,5 @@
 import random
 
-
 def get_random_uppercase():
     alphabet = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
     random_index = random.randint(0, len(alphabet) - 1)
