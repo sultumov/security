@@ -8,6 +8,7 @@ from flask import request, render_template
 def connect_to_database():
     return pymysql.connect(
         host="localhost",
+        port=3307,
         user="root",
         password="root",
         database="LAB2"
