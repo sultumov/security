@@ -8,8 +8,9 @@ from flask import request, render_template
 def connect_to_database():
     return pymysql.connect(
         host="localhost",
+        port=3307,
         user="root",
-        password="rick",
+        password="root",
         database="LAB2"
     )
 
@@ -120,7 +121,8 @@ def getaudit():
         #Получаем данные из таблицы журнала
         connection = connect_to_database()
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM audit_log")
+            cursor.execute("select event_datetime,username,"
+                           "event_description from audit_log")
             data = cursor.fetchall()
         return data
 
