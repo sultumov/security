@@ -121,7 +121,8 @@ def getaudit():
         #Получаем данные из таблицы журнала
         connection = connect_to_database()
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM audit_log")
+            cursor.execute("select event_datetime,username,"
+                           "event_description from audit_log")
             data = cursor.fetchall()
         return data
 
