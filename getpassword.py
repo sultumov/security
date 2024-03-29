@@ -1,3 +1,4 @@
+import math
 import random
 
 def get_random_uppercase():
@@ -9,10 +10,11 @@ def get_random_digit():
 def get_random_special_char():
     special_chars = '!"#$%\'&*()'
     return random.choice(special_chars)
-def get_random_lowercase():
+
+def get_random_lowercase(index):
     alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-    random_index = random.randint(0, len(alphabet) - 1)
-    return alphabet[random_index]
+    # random_index = random.randint(0, len(alphabet) - 1)
+    return alphabet[index]
 
 def newpass(identifier):
     n = len(identifier)
@@ -23,9 +25,9 @@ def newpass(identifier):
         fourth_char = get_random_special_char()
         fifth_char = get_random_special_char()
         sixth_char = get_random_special_char()
-        seven_char = get_random_lowercase()
-        eight_char = get_random_uppercase()
+        seven_char = get_random_uppercase()
+        eight_char = get_random_lowercase((n*n)%15+(n*n*n)%15+1)
 
-        password = first_char + second_char + str(third_char) + str(fourth_char) + fifth_char + sixth_char+seven_char+eight_char
+        password = f'{str(first_char)}{str(second_char)}{str(third_char)}{fourth_char}{fifth_char}{sixth_char}{seven_char}{eight_char}'
 
         return password
